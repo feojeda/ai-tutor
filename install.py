@@ -88,7 +88,17 @@ def install_skill(agent_id: str, dry_run: bool = False) -> tuple[bool, str]:
     skill_dir.mkdir(parents=True, exist_ok=True)
     dest = skill_dir / "SKILL.md"
     shutil.copy2(source, dest)
-    return True, f"Installed: {dest}"
+
+    # Also copy references/ and templates/ directories
+    for subdir in ["references", "templates"]:
+        src_subdir = PROJECT_ROOT / "skills" / "tutor" / subdir
+        if src_subdir.exists():
+            dst_subdir = skill_dir / subdir
+            if dst_subdir.exists():
+                shutil.rmtree(dst_subdir)
+            shutil.copytree(src_subdir, dst_subdir)
+
+    return True, f"Installed: {skill_dir}"
 
 
 def uninstall_skill(agent_id: str) -> tuple[bool, str]:
@@ -103,6 +113,11 @@ def uninstall_skill(agent_id: str) -> tuple[bool, str]:
         return False, f"Not installed for {AGENTS[agent_id]['name']}"
 
     dest.unlink()
+    # Remove references/ and templates/ subdirectories
+    for subdir in ["references", "templates"]:
+        subdir_path = skill_dir / subdir
+        if subdir_path.exists():
+            shutil.rmtree(subdir_path)
     # Remove empty dirs
     try:
         skill_dir.rmdir()
