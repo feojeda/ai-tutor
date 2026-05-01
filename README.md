@@ -44,9 +44,21 @@ python install.py
 El installer detecta qué agentes tienes instalados y copia la skill donde corresponde:
 
 ```
-✅ OpenCode: Installed → ~/.opencode/skills/tutor/SKILL.md
-✅ Claude Code: Installed → ~/.claude/skills/tutor/SKILL.md
+✅ OpenCode: Installed → ~/.opencode/skills/tutor/
+✅ Claude Code: Installed → ~/.claude/skills/tutor/
 ✅ Course 'ejemplo-ml': Installed → ~/.ai-tutor/cursos/ejemplo-ml/
+```
+
+### Desinstalar
+
+```bash
+python3 ~/.ai-tutor/install.py --uninstall
+```
+
+Esto remueve la skill de todos los agentes. También podés borrar el repo:
+
+```bash
+rm -rf ~/.ai-tutor
 ```
 
 ### Opciones
