@@ -17,7 +17,23 @@ El proyecto tiene dos partes:
 
 ---
 
-## Instalación rápida
+## 🚀 Instalación
+
+### Opción 1 — Terminal (recomendado)
+
+```bash
+git clone https://github.com/feojeda/ai-tutor.git ~/.ai-tutor && python3 ~/.ai-tutor/install.py
+```
+
+### Opción 2 — Dile a tu agente
+
+Copia y pega esto en tu chat con cualquier agente CLI:
+
+```
+Clona https://github.com/feojeda/ai-tutor.git en ~/.ai-tutor y ejecuta python3 ~/.ai-tutor/install.py. Luego dime qué agentes detectó.
+```
+
+### Opción 3 — Manual
 
 ```bash
 git clone https://github.com/feojeda/ai-tutor.git
